@@ -2,13 +2,31 @@
 
 using namespace std;
 
-void Game::init(){
+int Game::initSDL()
+{
 	if (SDL_Init(SDL_INIT_VIDEO | SDL_INIT_AUDIO) < 0) {
 		 printf("SDL could not initialize! SDL_Error: %s\n", SDL_GetError());
+		 return 1;
 	};
-	printf("Started\n");
-	currentScreen = 0;
-	gameState = new GameState();
+	return 0;
+}
+
+int Game::initRenderer()
+{
+	sdlRenderer = SDL_CreateRenderer(
+		sdlWindow,
+		-1,
+		SDL_RENDERER_ACCELERATED //TODO: Renderer flags
+	);
+	if(sdlRenderer == NULL ) {
+		printf("Renderer could not be created! SDL_Error: %s\n", SDL_GetError()); 
+		return 1;
+	}
+	return 0;
+}
+
+int Game::initWindow()
+{
 	sdlWindow = SDL_CreateWindow(
 		"SDL Tutorial",
 		SDL_WINDOWPOS_UNDEFINED,
@@ -19,51 +37,93 @@ void Game::init(){
 	);
 	if(sdlWindow == NULL ) {
 		printf("Window could not be created! SDL_Error: %s\n", SDL_GetError()); 
+		return 1;
 	}
-	sdlRenderer = SDL_CreateRenderer(
-		sdlWindow,
-		-1,
-		SDL_RENDERER_ACCELERATED //TODO: Renderer flags
-	);
-	if(sdlRenderer == NULL ) {
-		printf("Renderer could not be created! SDL_Error: %s\n", SDL_GetError()); 
-	}
-	SDL_SetRenderDrawColor(sdlRenderer, 0xFF, 0xFF, 0xFF, 0xFF);
+	return 0;
+}
+
+int Game::initSdlImage()
+{
 	int imgFlags = IMG_INIT_PNG;
 	if( !( IMG_Init( imgFlags ) & imgFlags ) ) {
-		cerr<<"SDL_Image could not start\n";
+		printf("SDL_Image could not start\n"); 
+		return 1;
 	}
+	return 0;
+}
 
-	if(Mix_OpenAudio(MIX_DEFAULT_FREQUENCY, MIX_DEFAULT_FORMAT, 1, 4096)!=0){
-		cerr<<"Audio could not start\n";
-	}
-
-	//Resource loading
-	this->resourceManager = new ResourceManager();
-
-	//Graphics
+int Game::loadImages()
+{
 	resourceManager->load_image((char *)G_SELECTSCREEN, sdlRenderer);
 	resourceManager->load_image((char *)G_UI, sdlRenderer);
 	resourceManager->load_image((char *)G_PORTRAITS, sdlRenderer);
 	resourceManager->load_image((char *)G_WORLDMAP, sdlRenderer);
 	resourceManager->load_image((char *)G_INTRO, sdlRenderer);
+	return 0;
+}
 
-	//Music
+int Game::loadMusic()
+{
 	resourceManager->load_music((char *)M_TEAMSELECTION);
 	resourceManager->load_music((char *)M_USA);
 	resourceManager->load_music((char *)M_VS);
+	return 0;
+}
 
-	//Sound
+int Game::loadSoundEffects()
+{
 	resourceManager->load_sound((char *)S_CURSOR);
 	resourceManager->load_sound((char *)S_SHINY);
+	return 0;
+}
 
-	//Resource load finished
+int Game::initMixer()
+{
+	if(Mix_OpenAudio(MIX_DEFAULT_FREQUENCY, MIX_DEFAULT_FORMAT, 1, 4096)!=0){
+		printf("Audio could not start\n"); 
+		return 1;
+	}
+	return 0;
+}
 
-	this->newMatch = new NewMatch(0,0,0);
+int Game::init()
+{
+	if (
+		Game::initSDL() > 0 ||
+		Game::initWindow() > 0 ||
+		Game::initRenderer() > 0 ||
+		Game::initSdlImage() > 0 ||
+		Game::initMixer() > 0
+	) {
+		return 1;
+	}
 
-	SelectTeamScreen newSelectTeamScreen(10,resourceManager,gameState);
-	selectTeamScreen = newSelectTeamScreen;
+	//Resource loading
+	this->resourceManager = new ResourceManager();
+	if (
+		Game::loadImages() > 0 ||
+		Game::loadMusic() > 0 ||
+		Game::loadSoundEffects() > 0
+	) {
+		return 1;
+	}
+
+	//Init other stuff
+	SDL_SetRenderDrawColor(sdlRenderer, 0xFF, 0xFF, 0xFF, 0xFF);
+	printf("Started\n");
+	currentScreen = 0;
+	this->sceneIndex = 0;
+	gameState = new GameState();
+
+	//this->newMatch = new NewMatch(0,0,0);
+
+	//SelectTeamScreen newSelectTeamScreen(10,resourceManager,gameState);
+	//selectTeamScreen = newSelectTeamScreen;
 	exit = false;
+	Game::setUpFirstScene();
+	Game::setUpSecondScene();
+	Game::setUpThirdScene();
+	return 0;
 }
 
 void Game::loop(){
@@ -77,6 +137,14 @@ void Game::loop(){
 		SDL_RenderClear(sdlRenderer);
 
 		int loops = fps_sync();
+		int key;
+		for (int i=0;i<loops;i++) {
+			key = Game::readKeyboard();
+		}
+		int nextScene = this->scenes[sceneIndex]->update(key);
+		this->scenes[sceneIndex]->print();
+		this->scenes[sceneIndex]->draw(sdlRenderer);
+		/*
 		int i;
 		if (currentScreen == 0) {
 			for (i=0;i<loops;i++) {
@@ -125,7 +193,9 @@ void Game::loop(){
 			match.update();
 			match.draw(sdlRenderer);
 		}
+		*/
 		SDL_RenderPresent(sdlRenderer);
+		sceneIndex = nextScene;
 	}
 }
 
@@ -147,6 +217,16 @@ int Game::fps_sync (void)
 	}
 }
 
+int Game::readKeyboard(){
+	const Uint8 *keystate = SDL_GetKeyboardState(NULL);
+	if (keystate[SDL_SCANCODE_UP]) return 1;
+	else if (keystate[SDL_SCANCODE_DOWN])return 2;
+	else if (keystate[SDL_SCANCODE_LEFT])return 3;
+	else if (keystate[SDL_SCANCODE_RIGHT])return 4;
+	else if (keystate[SDL_SCANCODE_RETURN]) return 5;
+	else return 0;
+}
+
 void Game::finish(){
 	SDL_DestroyRenderer(sdlRenderer);
 	SDL_DestroyWindow(sdlWindow);
@@ -156,4 +236,21 @@ void Game::finish(){
 	IMG_Quit();
 	SDL_Quit();
 	printf("Bye!\n");
+}
+
+//This will be probably managed by reading files from the
+//filesystem!
+void Game::setUpFirstScene(){
+	this->scenes.push_back(std::make_unique<Scene>(0, "first"));
+	this->scenes[0]->addEntity();
+}
+
+void Game::setUpSecondScene(){
+	this->scenes.push_back(std::make_unique<Scene>(1, "second"));
+	this->scenes[1]->addEntity();
+}
+
+void Game::setUpThirdScene(){
+	this->scenes.push_back(std::make_unique<Scene>(2, "third"));
+	this->scenes[2]->addEntity();
 }

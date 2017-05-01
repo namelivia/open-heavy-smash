@@ -9,28 +9,50 @@
 #include "GameState.h"
 #include "NewMatch.h"
 #include "Constants.h"
+#include "Scene.h"
+#include <vector>
+#include <memory>
 
 class Game{
 private:
 	SDL_Window *sdlWindow;
 	SDL_Renderer *sdlRenderer;
+	std::vector<std::unique_ptr<Scene>> scenes;
+	/*
 	Match match;
 	NewMatch *newMatch;
 	VsScreen vsScreen;
 	MapScreen mapScreen;
 	SelectTeamScreen selectTeamScreen;
+	*/
 	SDL_Event event;
 	ResourceManager *resourceManager;
 	GameState *gameState;
 	bool exit;
 	int currentScreen;
+	int sceneIndex;
+
+	int initSDL();
+	int initWindow();
+	int initRenderer();
+	int initSdlImage();
+	int initMixer();
+
+	int loadImages();
+	int loadMusic();
+	int loadSoundEffects();
+
+	int readKeyboard();
+  int fps_sync();
 
 public:
 
-	void init();
+	int init();
 	void loop();
 	void finish();
-  int fps_sync();
+	void setUpFirstScene();
+	void setUpSecondScene();
+	void setUpThirdScene();
 };
 
 #endif /* GAME_H_ */
