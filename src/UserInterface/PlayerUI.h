@@ -1,10 +1,3 @@
-/*
- * PlayerUI.h
- *
- *  Created on: 03/11/2012
- *      Author: nacho
- */
-
 #ifndef PLAYERUI_H_
 #define PLAYERUI_H_
 
@@ -46,6 +39,5 @@ public:
 	void set_score(int score);
 
 };
-
 
 #endif /* PLAYERUI_H_ */

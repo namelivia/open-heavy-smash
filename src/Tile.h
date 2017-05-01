@@ -1,10 +1,3 @@
-/*
- * Tile.h
- *
- *  Created on: 20/08/2010
- *      Author: endlessdark
- */
-
 #ifndef TILE_H_
 #define TILE_H_
 
@@ -12,10 +5,10 @@
 
 class Tile : public Sprite {
 private:
-    char tipo;
+    char type;
 public:
     Tile() {}
-    void set_tipo(char nuevo_tipo);
-    char get_tipo();
+    void set_type(char new_type);
+    char get_type();
 };
 #endif /* TILE_H_ */

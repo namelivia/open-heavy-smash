@@ -1,10 +1,3 @@
-/*
- * SoundFX.cpp
- *
- *  Created on: 20/08/2010
- *      Author: endlessdark
- */
-
 #include "SoundFX.h"
 #include <iostream>
 #include "SDL/SDL_mixer.h"

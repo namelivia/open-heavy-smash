@@ -1,10 +1,3 @@
-/*
- * PowerBar.h
- *
- *  Created on: 20/08/2010
- *      Author: endlessdark
- */
-
 #ifndef POWERBAR_H_
 #define POWERBAR_H_
 

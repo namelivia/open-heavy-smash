@@ -1,10 +1,3 @@
-/*
- * MatchState.h
- *
- *  Created on: 20/08/2010
- *      Author: endlessdark
- */
-
 #ifndef MATCHSTATE_H_
 #define MATCHSTATE_H_
 

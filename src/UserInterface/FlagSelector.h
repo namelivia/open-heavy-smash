@@ -1,10 +1,3 @@
-/*
- * FlagSelector.h
- *
- *  Created on: 20/08/2010
- *      Author: endlessdark
- */
-
 #ifndef FLAGSELECTOR_H_
 #define FLAGSELECTOR_H_
 

@@ -1,10 +1,3 @@
-/*
- * GameState.h
- *
- *  Created on: 20/08/2010
- *      Author: endlessdark
- */
-
 #ifndef GAMESTATE_H_
 #define GAMESTATE_H_
 

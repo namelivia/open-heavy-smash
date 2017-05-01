@@ -1,10 +1,3 @@
-/*
- * GameState.cpp
- *
- *  Created on: 20/08/2010
- *      Author: endlessdark
- */
-
 #include "GameState.h"
 
 bool GameState::getDefeated(int index){

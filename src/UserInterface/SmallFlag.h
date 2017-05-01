@@ -1,10 +1,3 @@
-/*
- * SmallFlag.h
- *
- *  Created on: 20/08/2010
- *      Author: endlessdark
- */
-
 #ifndef SMALLFLAG_H_
 #define SMALLFLAG_H_
 

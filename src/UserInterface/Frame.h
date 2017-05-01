@@ -1,10 +1,3 @@
-/*
- * Frame.h
- *
- *  Created on: 20/08/2010
- *      Author: endlessdark
- */
-
 #ifndef FRAME_H_
 #define FRAME_H_
 

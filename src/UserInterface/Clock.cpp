@@ -1,10 +1,3 @@
-/*
- * Clock.cpp
- *
- *  Created on: 20/08/2010
- *      Author: endlessdark
- */
-
 #include "Clock.h"
 
 	void Clock::load_image(char *path, ResourceManager *resourceManager){

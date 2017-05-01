@@ -1,10 +1,3 @@
-/*
- * Flag.h
- *
- *  Created on: 20/08/2010
- *      Author: endlessdark
- */
-
 #ifndef FLAG_H_
 #define FLAG_H_
 

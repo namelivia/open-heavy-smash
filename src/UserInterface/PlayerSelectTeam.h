@@ -1,10 +1,3 @@
-/*
- * PlayerSelectTeam.h
- *
- *  Created on: 03/11/2012
- *      Author: nacho
- */
-
 #ifndef PLAYERSELECTTEAM_H_
 #define PLAYERSELECTTEAM_H_
 

@@ -1,10 +1,3 @@
-/*
- * SoundFX.h
- *
- *  Created on: 20/08/2010
- *      Author: endlessdark
- */
-
 #ifndef SOUNDFX_H_
 #define SOUNDFX_H_
 #include "SDL/SDL_mixer.h"

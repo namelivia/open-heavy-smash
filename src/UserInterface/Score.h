@@ -1,10 +1,3 @@
-/*
- * Score.h
- *
- *  Created on: 20/08/2010
- *      Author: endlessdark
- */
-
 #ifndef SCORE_H_
 #define SCORE_H_
 

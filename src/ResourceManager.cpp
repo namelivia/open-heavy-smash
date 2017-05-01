@@ -1,13 +1,6 @@
-/*
- * ResourceManager.cpp
- *
- *  Created on: 20/08/2010
- *      Author: endlessdark
- */
-
 #include "ResourceManager.h"
 
-void ResourceManager::terminar(){
+void ResourceManager::finish(){
 }
 
 SDL_Surface *ResourceManager::get_image(char *path){

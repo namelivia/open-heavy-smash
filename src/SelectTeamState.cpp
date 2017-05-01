@@ -1,10 +1,3 @@
-/*
- * SelectTeamState.cpp
- *
- *  Created on: 20/08/2010
- *      Author: endlessdark
- */
-
 #include "SelectTeamState.h"
 
 int SelectTeamState::getTime(){

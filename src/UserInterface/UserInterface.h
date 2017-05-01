@@ -1,10 +1,3 @@
-/*
- * UserInterface.h
- *
- *  Created on: 03/11/2012
- *      Author: nacho
- */
-
 #ifndef USERINTERFACE_H_
 #define USERINTERFACE_H_
 
@@ -34,7 +27,7 @@ public:
 		}
 
 	void draw(SDL_Surface *screen);
-	void cargar(char *path,ResourceManager *resourceManager);
+	void load(char *path,ResourceManager *resourceManager);
 	void update(MatchState *matchState);
 };
 

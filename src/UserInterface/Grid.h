@@ -1,10 +1,3 @@
-/*
- * Grid.h
- *
- *  Created on: 20/08/2010
- *      Author: endlessdark
- */
-
 #ifndef GRID_H_
 #define GRID_H_
 

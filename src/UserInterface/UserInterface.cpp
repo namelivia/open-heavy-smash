@@ -1,10 +1,3 @@
-/*
- * UserInterface.cpp
- *
- *  Created on: 20/08/2010
- *      Author: endlessdark
- */
-
 #include "UserInterface.h"
 
 void UserInterface::draw(SDL_Surface *screen){
@@ -12,7 +5,7 @@ void UserInterface::draw(SDL_Surface *screen){
 	player1UI->draw(screen);
 	player2UI->draw(screen);
 }
-void UserInterface::cargar(char *path,ResourceManager *resourceManager){
+void UserInterface::load(char *path,ResourceManager *resourceManager){
 	clock->load_image(path,resourceManager);
 	player1UI->load_image(path,resourceManager);
 	player2UI->load_image(path,resourceManager);

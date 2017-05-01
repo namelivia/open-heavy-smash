@@ -1,10 +1,3 @@
-/*
- * NewMatch.cpp
- *
- *  Created on: 20/08/2010
- *      Author: endlessdark
- */
-
 #include "NewMatch.h"
 
 int NewMatch::getTime(){

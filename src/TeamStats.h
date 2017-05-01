@@ -1,10 +1,3 @@
-/*
- * TeamStats.h
- *
- *  Created on: 20/08/2010
- *      Author: endlessdark
- */
-
 #ifndef TEAMSTATS_H_
 #define TEAMSTATS_H_
 

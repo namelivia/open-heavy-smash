@@ -1,10 +1,3 @@
-/*
- * NewMatch.h
- *
- *  Created on: 20/08/2010
- *      Author: endlessdark
- */
-
 #ifndef NEWMATCH_H_
 #define NEWMATCH_H_
 

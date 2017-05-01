@@ -1,55 +1,48 @@
-/*
- * Match.h
- *
- *  Created on: 20/08/2010
- *      Author: endlessdark
- */
-
 #ifndef MATCH_H_
 #define MATCH_H_
 
-#include "Camara.h"
-#include "Musica.h"
-#include "Constantes.h"
+#include "Camera.h"
+#include "Music.h"
+#include "Constants.h"
 #include "CurrentScreen.h"
 #include "UserInterface/Portrait.h"
-//#include "Escenario.h"
-//#include "Personaje.h"
-//#include "Ventana.h"
+//#include "Scenery.h"
+//#include "Character.h"
+//#include "Window.h"
 #include "UserInterface/UserInterface.h"
 
 class Match : CurrentScreen{
 private:
 public:
-	Camara *camara;
-	//Personaje *personaje;
-	//Escenario *escenario;
-	Musica *musica;
+	Camera *camera;
+	//Character *character;
+	//Scenery *scenery;
+	Music *music;
 	UserInterface *userInterface;
 	MatchState *matchState;
 
 	Match () {};
 	Match(NewMatch *newMatch,ResourceManager *resourceManager){
-		//escenario = new Escenario();
-		//personaje = new Personaje(45,1);
-		//ventana_zona = new Ventana(0,ALTO_PANTALLA-1.5*ALTO_TILE,3,12,500);
-		camara = new Camara();
-		musica = new Musica();
+		//scenery = new Scenery();
+		//character = new Character(45,1);
+		//window_zone = new Window(0,SCREEN_HEIGHT-1.5*TILE_HEIGHT,3,12,500);
+		camera = new Camera();
+		music = new Music();
 		matchState = new MatchState(newMatch->getTime());
-		userInterface = new UserInterface(0,0,ANCHO_PANTALLA,ALTO_PANTALLA,newMatch);
-		//ventana_zona ->set_mensaje(nombre);
-		//escenario->cargar_escenario(path_nivel);
-		musica->cargar((char *)M_USA,resourceManager);
-		//personaje->sprite.dibujo.load_image(path_personaje);
-		userInterface->cargar((char *)G_UI,resourceManager);
+		userInterface = new UserInterface(0,0,SCREEN_WIDTH,SCREEN_HEIGHT,newMatch);
+		//window_zone ->set_mensaje(nombre);
+		//scenery->load_scenery(path_nivel);
+		music->load((char *)M_USA,resourceManager);
+		//character->sprite.dibujo.load_image(path_character);
+		userInterface->load((char *)G_UI,resourceManager);
 
-		musica->reproducir();
+		music->play();
 	}
-	void actualizar_camara();
+	void update_camera();
 	virtual void update();
 	virtual void draw(SDL_Surface *screen);
-	virtual int leer_teclado();
-	virtual void terminar();
+	virtual int read_keyboard();
+	virtual void finish();
 };
 
 #endif /* MATCH_H_ */

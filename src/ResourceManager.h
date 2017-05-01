@@ -1,10 +1,3 @@
-/*
- * ResourceManager.h
- *
- *  Created on: 20/08/2010
- *      Author: endlessdark
- */
-
 #ifndef RESOURCEMANAGER_H_
 #define RESOURCEMANAGER_H_
 
@@ -53,7 +46,7 @@ public:
 	SDL_Surface *get_image(char *path);
 	Mix_Music *get_music(char *path);
 	Mix_Chunk *get_sound(char *path);
-	void terminar();
+	void finish();
 };
 
 #endif /* RESOURCEMANAGER_H_ */

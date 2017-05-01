@@ -1,24 +1,17 @@
-/*
- * SpriteText.h
- *
- *  Created on: 20/08/2010
- *      Author: endlessdark
- */
-
 #ifndef SPRITETEXT_H_
 #define SPRITETEXT_H_
 
-#include "../Constantes.h"
+#include "../Constants.h"
 #include "../Sprite.h"
 #include <string>
 
 class SpriteText {
 private:
 public:
-    Sprite characters[MAX_NOMBRE];
+    Sprite characters[MAX_NAME];
 
-    SpriteText(char text[MAX_NOMBRE]){}
-    void draw (SDL_Surface* screen,Camara *camara);
+    SpriteText(char text[MAX_NAME]){}
+    void draw (SDL_Surface* screen,Camera *camera);
 };
 
 #endif /* SPRITETEXT_H_ */

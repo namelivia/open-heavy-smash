@@ -1,10 +1,3 @@
-/*
- * PowerBar.cpp
- *
- *  Created on: 20/08/2010
- *      Author: endlessdark
- */
-
 #include "PowerBar.h"
 
 void PowerBar::load_image(char* path,ResourceManager *resourceManager){

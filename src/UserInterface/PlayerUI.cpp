@@ -1,10 +1,3 @@
-/*
- * PlayerUI.cpp
- *
- *  Created on: 20/08/2010
- *      Author: endlessdark
- */
-
 #include "PlayerUI.h"
 
 void PlayerUI::draw(SDL_Surface *screen){

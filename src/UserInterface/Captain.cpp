@@ -1,10 +1,3 @@
-/*
- * Captain.cpp
- *
- *  Created on: 20/08/2010
- *      Author: endlessdark
- */
-
 #include "Captain.h"
 
 void Captain::set_country(int country){

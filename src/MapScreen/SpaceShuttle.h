@@ -1,10 +1,3 @@
-/*
- * SpaceShuttle.h
- *
- *  Created on: 03/11/2012
- *      Author: nacho
- */
-
 #ifndef SPACESHUTTLE_H_
 #define SPACESHUTTLE_H_
 
@@ -49,6 +42,5 @@ public:
 	bool update(int destinationX, int destinationY);
 	void AnimateFire();
 };
-
 
 #endif /* SPACESHUTTLE_H_ */

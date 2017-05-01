@@ -1,14 +1,7 @@
-/*
- * Portrait.cpp
- *
- *  Created on: 20/08/2010
- *      Author: endlessdark
- */
-
 #include "Portrait.h"
 
 void Portrait::load_image(char* path,ResourceManager *resourceManager){
-	dibujo.load_image(path,resourceManager);
+	drawing.load_image(path,resourceManager);
 }
 
 void Portrait::set_country(int country){

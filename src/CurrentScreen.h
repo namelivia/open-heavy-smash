@@ -1,10 +1,3 @@
-/*
- * CurrentScreen.h
- *
- *  Created on: 20/08/2010
- *      Author: endlessdark
- */
-
 #ifndef CURRENTSCREEN_H_
 #define CURRENTSCREEN_H_
 
@@ -12,19 +5,19 @@
 
 class CurrentScreen{
 private:
-	Uint32 ciclos;
+	Uint32 cycles;
 	bool destroyMe;
 public:
 
 	explicit CurrentScreen () {
-		ciclos = 0;
+		cycles = 0;
 		destroyMe = false;
 	}
 	virtual void update();
 	virtual void draw(SDL_Surface *screen);
-	virtual int leer_teclado();
-	virtual void terminar();
-	int get_ciclos();
+	virtual int read_keyboard();
+	virtual void finish();
+	int get_cycles();
 	void set_destroyMe(bool destroyMe);
 	bool get_destroyMe();
 };

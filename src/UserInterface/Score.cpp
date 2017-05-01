@@ -1,10 +1,3 @@
-/*
- * Score.cpp
- *
- *  Created on: 20/08/2010
- *      Author: endlessdark
- */
-
 #include "Score.h"
 
 void Score::load_image(char* path,ResourceManager *resourceManager){

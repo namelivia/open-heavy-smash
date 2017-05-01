@@ -1,10 +1,3 @@
-/*
- * Frame.cpp
- *
- *  Created on: 20/08/2010
- *      Author: endlessdark
- */
-
 #include "Frame.h"
 
 void Frame::set_position(int x, int y){

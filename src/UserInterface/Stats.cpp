@@ -1,10 +1,3 @@
-/*
- * Stats.cpp
- *
- *  Created on: 20/08/2010
- *      Author: endlessdark
- */
-
 #include "Stats.h"
 
 void Stats::set_color(int color){

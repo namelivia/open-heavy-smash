@@ -1,10 +1,3 @@
-/*
- * PlayerName.cpp
- *
- *  Created on: 20/08/2010
- *      Author: endlessdark
- */
-
 #include "PlayerName.h"
 
 void PlayerName::set_name(int name){

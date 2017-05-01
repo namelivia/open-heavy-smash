@@ -1,12 +1,5 @@
-/*
- * SelectTeamScreen.cpp
- *
- *  Created on: 20/08/2010
- *      Author: endlessdark
- */
-
 #include "SelectTeamScreen.h"
-#include "Constantes.h"
+#include "Constants.h"
 
 void SelectTeamScreen::draw(SDL_Surface *screen){
 
@@ -18,38 +11,38 @@ void SelectTeamScreen::draw(SDL_Surface *screen){
 	player2SelectTeam->draw(screen);
 }
 
-int SelectTeamScreen::leer_teclado(){
-	int tecla = CurrentScreen::leer_teclado();
-	if (tecla>0) pressedKey=tecla;
+int SelectTeamScreen::read_keyboard(){
+	int key = CurrentScreen::read_keyboard();
+	if (key>0) pressedKey=key;
 	return 0;
 }
 
 void SelectTeamScreen::update(){
 	CurrentScreen::update();
-	if (CurrentScreen::get_ciclos()%CICLOSPORSEGUNDO == 0)
+	if (CurrentScreen::get_cycles()%CYCLESPERSEC == 0)
 			state->setTime(state->getTime()-1);
 
 	clock->set_time(state->getTime());
 
-	if (CurrentScreen::get_ciclos()%15 == 0)
+	if (CurrentScreen::get_cycles()%15 == 0)
 		flagSelector->update();
 
 	player1SelectTeam->update();
 	player2SelectTeam->update();
 
-	if (CurrentScreen::get_ciclos()%15 == 0){
+	if (CurrentScreen::get_cycles()%15 == 0){
 		if (pressedKey > 0){
 
 			if (pressedKey == 2){
 				selectedFlag++;
-				sonido->play();
+				sound->play();
 				if (selectedFlag > 9)
 					selectedFlag = 0;
 			}
 
 			else if (pressedKey == 1) {
 				selectedFlag--;
-				sonido->play();
+				sound->play();
 				if (selectedFlag < 0)
 					selectedFlag = 9;
 			}
@@ -60,7 +53,7 @@ void SelectTeamScreen::update(){
 		}
 	}
 
-	if (CurrentScreen::get_ciclos()>maxTime*CICLOSPORSEGUNDO)
+	if (CurrentScreen::get_cycles()>maxTime*CYCLESPERSEC)
 		CurrentScreen::set_destroyMe(true);
 
 	SelectFlag(selectedFlag);
@@ -81,7 +74,7 @@ void SelectTeamScreen::SelectFlag(int whatFlag){
 	player2SelectTeam->set_team(3);
 }
 
-void SelectTeamScreen::terminar(){
-	musica->liberar();
-	sonido->free();
+void SelectTeamScreen::finish(){
+	music->free();
+	sound->free();
 }

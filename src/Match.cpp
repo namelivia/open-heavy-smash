@@ -1,18 +1,11 @@
-/*
- * Match.cpp
- *
- *  Created on: 20/08/2010
- *      Author: endlessdark
- */
-
 #include "Match.h"
-#include "Constantes.h"
+#include "Constants.h"
 
-void Match::actualizar_camara(){
-	//camara->set_x(personaje->sprite.get_x()-ANCHO_PANTALLA/2);
-	//camara->set_y(personaje->sprite.get_y()-ALTO_PANTALLA/2);
-	if (camara->get_x()<0) camara->set_x(0);
-	if (camara->get_y()<0) camara->set_y(0);
+void Match::update_camera(){
+	//camera->set_x(character->sprite.get_x()-SCREEN_WIDTH/2);
+	//camera->set_y(character->sprite.get_y()-SCREEN_HEIGHT/2);
+	if (camera->get_x()<0) camera->set_x(0);
+	if (camera->get_y()<0) camera->set_y(0);
 }
 
 void Match::draw(SDL_Surface *screen){
@@ -20,34 +13,34 @@ void Match::draw(SDL_Surface *screen){
 	SDL_Rect clearRect;
 	clearRect.x = 0;
 	clearRect.y = 0;
-	clearRect.w = ANCHO_PANTALLA;
-	clearRect.h = ALTO_PANTALLA;
+	clearRect.w = SCREEN_WIDTH;
+	clearRect.h = SCREEN_HEIGHT;
 	SDL_FillRect(screen, &clearRect, 0);
 	if (userInterface !=NULL) userInterface->draw(screen);
-	//if (escenario!=NULL)escenario->draw(screen,camara);
-	//if (personaje!=NULL)personaje->draw(screen,camara);
-	//if (ventana_zona!=NULL && ventana_zona->get_vida()>0){ventana_zona->draw(screen);
-	//													 ventana_zona->decrementar_vida();
+	//if (scenery!=NULL)scenery->draw(screen,camera);
+	//if (character!=NULL)character->draw(screen,camera);
+	//if (window_zone!=NULL && window_zone->get_vida()>0){window_zone->draw(screen);
+	//													 window_zone->decrementar_vida();
 	//}
 }
 
-int Match::leer_teclado(){
+int Match::read_keyboard(){
 	return 0;
 }
 
 void Match::update(){
 
 	CurrentScreen::update();
-	actualizar_camara();
-	if (CurrentScreen::get_ciclos()%CICLOSPORSEGUNDO == 0)
+	update_camera();
+	if (CurrentScreen::get_cycles()%CYCLESPERSEC == 0)
 		matchState->setTime(matchState->getTime()-1);
-	if (CurrentScreen::get_ciclos()%POWERRATE == 0){
+	if (CurrentScreen::get_cycles()%POWERRATE == 0){
 			matchState->setPlayer1Power(matchState->getPlayer1Power()+1);
 			matchState->setPlayer2Power(matchState->getPlayer2Power()+1);
 	}
 	userInterface->update(matchState);
 }
 
-void Match::terminar(){
-	musica->liberar();
+void Match::finish(){
+	music->free();
 }

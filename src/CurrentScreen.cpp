@@ -1,16 +1,9 @@
-/*
- * CurrentScreen.cpp
- *
- *  Created on: 20/08/2010
- *      Author: endlessdark
- */
-
 #include "CurrentScreen.h"
 
 void CurrentScreen::draw(SDL_Surface *screen){
 }
 
-int CurrentScreen::leer_teclado(){
+int CurrentScreen::read_keyboard(){
 	Uint8 *keystate;
 	keystate= SDL_GetKeyState(NULL);
 	if (keystate[SDLK_UP]) return 1;
@@ -22,14 +15,14 @@ int CurrentScreen::leer_teclado(){
 }
 
 void CurrentScreen::update(){
-	ciclos++;
+	cycles++;
 }
 
-void CurrentScreen::terminar(){
+void CurrentScreen::finish(){
 }
 
-int CurrentScreen::get_ciclos(){
-	return ciclos;
+int CurrentScreen::get_cycles(){
+	return cycles;
 }
 
 bool CurrentScreen::get_destroyMe(){

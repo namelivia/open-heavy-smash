@@ -1,10 +1,3 @@
-/*
- * SelectTeamState.h
- *
- *  Created on: 20/08/2010
- *      Author: endlessdark
- */
-
 #ifndef SELECTTEAMSTATE_H_
 #define SELECTTEAMSTATE_H_
 

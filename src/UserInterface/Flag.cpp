@@ -1,10 +1,3 @@
-/*
- * Flag.cpp
- *
- *  Created on: 20/08/2010
- *      Author: endlessdark
- */
-
 #include "Flag.h"
 
 void Flag::set_country(int country){

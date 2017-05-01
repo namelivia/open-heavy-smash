@@ -1,10 +1,3 @@
-/*
- * PlayerSelectTeam.cpp
- *
- *  Created on: 20/08/2010
- *      Author: endlessdark
- */
-
 #include "PlayerSelectTeam.h"
 
 void PlayerSelectTeam::draw(SDL_Surface *screen){

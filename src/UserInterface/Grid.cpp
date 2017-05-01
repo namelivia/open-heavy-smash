@@ -1,10 +1,3 @@
-/*
- * Grid.cpp
- *
- *  Created on: 20/08/2010
- *      Author: endlessdark
- */
-
 #include "Grid.h"
 
 void Grid::set_color(int color){

@@ -1,10 +1,3 @@
-/*
- * Portrait.h
- *
- *  Created on: 20/08/2010
- *      Author: endlessdark
- */
-
 #ifndef PORTRAIT_H_
 #define PORTRAIT_H_
 
@@ -31,4 +24,4 @@ public:
 	int get_width();
 	int get_height();
 };
-#endif /* FLAG_H_ */
+#endif /* PORTRAIT_H_ */

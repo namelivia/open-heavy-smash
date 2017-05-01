@@ -1,15 +1,8 @@
-/*
- * MapScreen.h
- *
- *  Created on: 20/08/2010
- *      Author: endlessdark
- */
-
 #ifndef MAPSCREEN_H_
 #define MAPSCREEN_H_
 
-#include "../Musica.h"
-#include "../Constantes.h"
+#include "../Music.h"
+#include "../Constants.h"
 #include "../UserInterface/Portrait.h"
 #include "../CurrentScreen.h"
 #include "../SoundFX.h"
@@ -26,7 +19,7 @@ public:
 	Sprite *spaceStation;
 	Sprite destiny[10];
 	Flag flags[10];
-	Sprite background[ANCHO_PANTALLA];
+	Sprite background[SCREEN_WIDTH];
 	Uint8 selectedFlag;
 	GameState *gameState;
 	SpaceShuttle *spaceShuttle;
@@ -99,7 +92,7 @@ public:
 		}
 
 		//Background (set of lines), Should this be changed?
-		for(int i=0;i<ANCHO_PANTALLA;i++){
+		for(int i=0;i<SCREEN_WIDTH;i++){
 			background[i].load_image((char *)G_WORLDMAP,resourceManager);
 			background[i].set_x(i);
 			background[i].set_y(18);
@@ -122,8 +115,8 @@ public:
 
 	void update();
 	void draw(SDL_Surface *screen);
-	int leer_teclado();
-	void terminar();
+	int read_keyboard();
+	void finish();
 	bool get_destroyMe();
 };
 

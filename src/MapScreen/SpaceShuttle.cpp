@@ -1,10 +1,3 @@
-/*
- * SpaceShuttle.cpp
- *
- *  Created on: 20/08/2010
- *      Author: endlessdark
- */
-
 #include "SpaceShuttle.h"
 
 	void SpaceShuttle::load_image(char *path, ResourceManager *resourceManager){

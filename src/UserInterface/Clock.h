@@ -1,10 +1,3 @@
-/*
- * Clock.h
- *
- *  Created on: 03/11/2012
- *      Author: nacho
- */
-
 #ifndef CLOCK_H_
 #define CLOCK_H_
 

@@ -1,10 +1,3 @@
-/*
- * Captain.h
- *
- *  Created on: 20/08/2010
- *      Author: endlessdark
- */
-
 #ifndef CAPTAIN_H_
 #define CAPTAIN_H_
 

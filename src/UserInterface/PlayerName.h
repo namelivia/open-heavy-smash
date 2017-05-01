@@ -1,10 +1,3 @@
-/*
- * PlayerName.h
- *
- *  Created on: 20/08/2010
- *      Author: endlessdark
- */
-
 #ifndef PLAYERNAME_H_
 #define PLAYERNAME_H_
 

@@ -1,10 +1,3 @@
-/*
- * FlagSelector.cpp
- *
- *  Created on: 20/08/2010
- *      Author: endlessdark
- */
-
 #include "FlagSelector.h"
 
 void FlagSelector::load_image(char* path, ResourceManager *resourceManager){

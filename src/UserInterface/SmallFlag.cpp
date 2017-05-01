@@ -1,10 +1,3 @@
-/*
- * SmallFlag.cpp
- *
- *  Created on: 20/08/2010
- *      Author: endlessdark
- */
-
 #include "SmallFlag.h"
 
 void SmallFlag::set_country(int country){
