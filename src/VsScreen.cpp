@@ -1,17 +1,11 @@
 #include "VsScreen.h"
 #include "Constants.h"
 
-void VsScreen::draw(SDL_Surface *screen){
+void VsScreen::draw(SDL_Renderer *sdlRenderer){
 
-	SDL_Rect clearRect;
-	clearRect.x = 0;
-	clearRect.y = 0;
-	clearRect.w = SCREEN_WIDTH;
-	clearRect.h = SCREEN_HEIGHT;
-	SDL_FillRect(screen, &clearRect, 0);
-	portrait1->draw(screen);
-	portrait2->draw(screen);
-	vs->draw(screen);
+	portrait1->draw(sdlRenderer);
+	portrait2->draw(sdlRenderer);
+	vs->draw(sdlRenderer);
 }
 
 int VsScreen::read_keyboard(){
@@ -28,12 +22,12 @@ void VsScreen::update(){
 		CurrentScreen::set_destroyMe(true);
 
 	if (CurrentScreen::get_cycles()==400){
-		vs->flash();
+		//vs->flash();
 		sound->play();
 	}
 
-	if (CurrentScreen::get_cycles()==403)
-		vs->flash();
+	/*if (CurrentScreen::get_cycles()==403)
+		vs->flash();*/
 }
 
 bool VsScreen::get_destroyMe(){

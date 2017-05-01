@@ -40,7 +40,7 @@ public:
 	}
 	void update_camera();
 	virtual void update();
-	virtual void draw(SDL_Surface *screen);
+	virtual void draw(SDL_Renderer *sdlRenderer);
 	virtual int read_keyboard();
 	virtual void finish();
 };

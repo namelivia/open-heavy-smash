@@ -50,8 +50,8 @@ public:
 			flags[i].load_image((char *)G_UI,resourceManager);
 			flags[i].set_position((SCREEN_WIDTH-24)/2,56+17*i);
 			flags[i].set_country(i);
-			if (gameState->getDefeated(i))
-				flags[i].make_grayscale();
+			/*if (gameState->getDefeated(i))
+				flags[i].make_grayscale();*/
 		}
 
 		selectedFlag=0;
@@ -68,7 +68,7 @@ public:
 
 	}
 	void update();
-	void draw(SDL_Surface *screen);
+	void draw(SDL_Renderer *sdlRenderer);
 	int read_keyboard();
 	void finish();
 	int get_selectedTeam();

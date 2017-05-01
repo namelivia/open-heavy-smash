@@ -6,8 +6,8 @@ void TiledBackground::load_image(char* path,ResourceManager *resourceManager){
 	}
 }
 
-void TiledBackground::draw(SDL_Surface *screen){
+void TiledBackground::draw(SDL_Renderer *sdlRenderer){
 	for (int i=0;i<tile_number;i++){
-					tiles[i].draw(screen);
-				}
+		tiles[i].draw(sdlRenderer);
+	}
 }

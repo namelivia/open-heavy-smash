@@ -14,17 +14,30 @@ void Sprite::set_x(int new_x){x=new_x;}
 void Sprite::set_y(int new_y){y=new_y;}
 int Sprite::get_x(){return x;}
 int Sprite::get_y(){return y;}
-void Sprite::draw(SDL_Surface *screen,Camera *camera){
+
+void Sprite::draw(SDL_Renderer *sdlRenderer,Camera *camera){
+	SDL_Texture *texture = drawing.get_drawing();
 	SDL_Rect fuente = {source_x,source_y, width, height};
 	SDL_Rect rect = {x-camera->get_x(),y-camera->get_y(),0,0};
-	SDL_BlitSurface (drawing.get_drawing(),&fuente,screen, &rect);
+	SDL_RenderCopy(sdlRenderer, texture, &fuente, &rect);
 }
-void Sprite::draw(SDL_Surface *screen){
-	SDL_Rect fuente = {source_x,source_y, width, height};
-	SDL_Rect rect = {x,y,0,0};
-	SDL_BlitSurface (drawing.get_drawing(),&fuente,screen, &rect);}
 
-void Sprite::make_flasheable(Uint8 strength){
+void Sprite::draw(SDL_Renderer *sdlRenderer){
+	SDL_Texture *texture = drawing.get_drawing();
+	SDL_Rect src;
+	SDL_Rect dest;
+ 	src.x	= source_x;
+	src.y = source_y;
+	src.w = width;
+	src.h = height;
+	dest.x = x;
+	dest.y = y;
+	dest.w = width;
+	dest.h = height;
+	SDL_RenderCopy(sdlRenderer, texture, &src, &dest);
+}
+
+/*void Sprite::make_flasheable(Uint8 strength){
 	flashed = drawing;
 	flashed.flash(strength);
 	temp = drawing;
@@ -53,7 +66,7 @@ void Sprite::flash(){
 		drawing = flashed;
 		isFlashing = true;
 	}
-}
+}*/
 
 void Sprite::load_image(char* path, ResourceManager *resourceManager){
 	drawing.load_image(path,resourceManager);

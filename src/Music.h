@@ -1,6 +1,6 @@
 #ifndef MUSIC_H_
 #define MUSIC_H_
-#include "SDL/SDL_mixer.h"
+#include "SDL2/SDL_mixer.h"
 #include "ResourceManager.h"
 
 class Music{

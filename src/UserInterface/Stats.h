@@ -44,7 +44,7 @@ public:
 
 	void set_color(int name);
 	void set_position(int x, int y);
-	void draw(SDL_Surface *screen);
+	void draw(SDL_Renderer *sdlRenderer);
 	void load_image(char *path, ResourceManager *resourceManager);
 	void set_country(int country);
 	void update();

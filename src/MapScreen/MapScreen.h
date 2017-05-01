@@ -69,7 +69,7 @@ public:
 				flags[i].set_position(48+24*(i-1),208);
 
 			if (i != selectedFlag)
-				flags[i].make_grayscale();
+				//flags[i].make_grayscale();
 
 			if (!gameState->getDefeated(i)){
 				destiny[i].load_image((char *)G_WORLDMAP,resourceManager);
@@ -114,7 +114,7 @@ public:
 	}
 
 	void update();
-	void draw(SDL_Surface *screen);
+	void draw(SDL_Renderer *sdlRenderer);
 	int read_keyboard();
 	void finish();
 	bool get_destroyMe();

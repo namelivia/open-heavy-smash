@@ -1,7 +1,7 @@
 #ifndef GAME_H_
 #define GAME_H_
 
-#include "SDL/SDL.h"
+#include "SDL2/SDL.h"
 #include "Match.h"
 #include "VsScreen.h"
 #include "MapScreen/MapScreen.h"
@@ -12,7 +12,8 @@
 
 class Game{
 private:
-	SDL_Surface *screen;
+	SDL_Window *sdlWindow;
+	SDL_Renderer *sdlRenderer;
 	Match match;
 	NewMatch *newMatch;
 	VsScreen vsScreen;

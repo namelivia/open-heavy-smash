@@ -1,6 +1,6 @@
 #ifndef SOUNDFX_H_
 #define SOUNDFX_H_
-#include "SDL/SDL_mixer.h"
+#include "SDL2/SDL_mixer.h"
 #include "ResourceManager.h"
 
 class SoundFX{

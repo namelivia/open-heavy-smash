@@ -6,10 +6,10 @@ void Score::load_image(char* path,ResourceManager *resourceManager){
 	numbers[1].load_image(path,resourceManager);
 }
 
-void Score::draw(SDL_Surface *screen){
-	background.draw(screen);
-	numbers[0].draw(screen);
-	numbers[1].draw(screen);
+void Score::draw(SDL_Renderer *sdlRenderer){
+	background.draw(sdlRenderer);
+	numbers[0].draw(sdlRenderer);
+	numbers[1].draw(sdlRenderer);
 }
 
 void Score::set_score(Uint8 score){

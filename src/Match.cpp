@@ -8,18 +8,12 @@ void Match::update_camera(){
 	if (camera->get_y()<0) camera->set_y(0);
 }
 
-void Match::draw(SDL_Surface *screen){
+void Match::draw(SDL_Renderer *sdlRenderer){
 
-	SDL_Rect clearRect;
-	clearRect.x = 0;
-	clearRect.y = 0;
-	clearRect.w = SCREEN_WIDTH;
-	clearRect.h = SCREEN_HEIGHT;
-	SDL_FillRect(screen, &clearRect, 0);
-	if (userInterface !=NULL) userInterface->draw(screen);
-	//if (scenery!=NULL)scenery->draw(screen,camera);
-	//if (character!=NULL)character->draw(screen,camera);
-	//if (window_zone!=NULL && window_zone->get_vida()>0){window_zone->draw(screen);
+	if (userInterface !=NULL) userInterface->draw(sdlRenderer);
+	//if (scenery!=NULL)scenery->draw(sdlRenderer,camera);
+	//if (character!=NULL)character->draw(sdlRenderer,camera);
+	//if (window_zone!=NULL && window_zone->get_vida()>0){window_zone->draw(sdlRenderer);
 	//													 window_zone->decrementar_vida();
 	//}
 }

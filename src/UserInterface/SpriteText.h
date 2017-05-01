@@ -11,7 +11,7 @@ public:
     Sprite characters[MAX_NAME];
 
     SpriteText(char text[MAX_NAME]){}
-    void draw (SDL_Surface* screen,Camera *camera);
+    void draw (SDL_Renderer* sdlRenderer,Camera *camera);
 };
 
 #endif /* SPRITETEXT_H_ */

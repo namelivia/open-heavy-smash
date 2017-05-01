@@ -21,7 +21,7 @@ public:
 		set_position(x,y);
 		set_power(power);
 	}
-	void draw(SDL_Surface *screen);
+	void draw(SDL_Renderer *sdlRenderer);
 	void load_image(char* path,ResourceManager *resourceManager);
 	void set_position(Uint16 x, Uint16 y);
 	void set_power(Uint8 power);

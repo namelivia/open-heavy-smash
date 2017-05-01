@@ -1,12 +1,12 @@
 #include "PlayerSelectTeam.h"
 
-void PlayerSelectTeam::draw(SDL_Surface *screen){
-	portrait->draw(screen);
-	frame->draw(screen);
-	playerName->draw(screen);
-	grid->draw(screen);
-	stats->draw(screen);
-	captain->draw(screen);
+void PlayerSelectTeam::draw(SDL_Renderer *sdlRenderer){
+	portrait->draw(sdlRenderer);
+	frame->draw(sdlRenderer);
+	playerName->draw(sdlRenderer);
+	grid->draw(sdlRenderer);
+	stats->draw(sdlRenderer);
+	captain->draw(sdlRenderer);
 }
 
 void PlayerSelectTeam::load_image(char *path_selectTeam,char *path_ui,char *path_portraits, ResourceManager *resourceManager){

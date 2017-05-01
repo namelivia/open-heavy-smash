@@ -5,10 +5,10 @@
 		numbers[0].load_image(path,resourceManager);
 		numbers[1].load_image(path,resourceManager);
 	}
-	void Clock::draw(SDL_Surface *screen){
-		this->background.draw(screen);
-		this->numbers[0].draw(screen);
-		this->numbers[1].draw(screen);;
+	void Clock::draw(SDL_Renderer *sdlRenderer){
+		this->background.draw(sdlRenderer);
+		this->numbers[0].draw(sdlRenderer);
+		this->numbers[1].draw(sdlRenderer);;
 	}
 
 	void Clock::set_time(int time){

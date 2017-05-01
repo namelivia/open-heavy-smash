@@ -20,10 +20,12 @@ public:
 
 		tile_number = (SCREEN_HEIGHT/(width*2)+2)*(horizontal_tiles + horizontal_tiles+2);
 		for (int i=0;i<tile_number;i++){
-			if ((i/horizontal_tiles)%2 == 0)
+			if ((i/horizontal_tiles)%2 == 0) {
 				tiles[i].set_x(width*(i%horizontal_tiles));
-			else
+			}
+			else {
 				tiles[i].set_x(width*(i%horizontal_tiles) - width/2);
+			}
 			tiles[i].set_y(79*(i/horizontal_tiles));
 			tiles[i].set_width(width);
 			tiles[i].set_height(height);
@@ -32,7 +34,7 @@ public:
 		}
 	}
 
-	void draw(SDL_Surface *screen);
+	void draw(SDL_Renderer *sdlRenderer);
 	void load_image(char* path,ResourceManager *resourceManager);
 };
 

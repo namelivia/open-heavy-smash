@@ -60,8 +60,8 @@ void Character::stop_moving(){
 	}
 }
 
-void Character::draw(SDL_Surface *screen,Camera *camera){
-	sprite.draw(screen,camera);
+void Character::draw(SDL_Renderer *sdlRenderer,Camera *camera){
+	sprite.draw(sdlRenderer,camera);
 }
 
 int Character::get_speed(){

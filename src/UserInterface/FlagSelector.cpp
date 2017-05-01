@@ -4,8 +4,8 @@ void FlagSelector::load_image(char* path, ResourceManager *resourceManager){
 	sprite.load_image(path,resourceManager);
 }
 
-void FlagSelector::draw(SDL_Surface *screen){
-	sprite.draw(screen);
+void FlagSelector::draw(SDL_Renderer *sdlRenderer){
+	sprite.draw(sdlRenderer);
 }
 
 void FlagSelector::update(){

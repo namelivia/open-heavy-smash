@@ -31,7 +31,7 @@ public:
 
 		}
 	}
-	void draw(SDL_Surface *screen);
+	void draw(SDL_Renderer *sdlRenderer);
 	void load_image(char *path,ResourceManager *resourceManager);
 	int get_width();
 	int get_height();

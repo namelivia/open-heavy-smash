@@ -16,7 +16,7 @@ public:
 			set_position(x,y);
 			set_time(time);
 		}
-	void draw(SDL_Surface *screen);
+	void draw(SDL_Renderer *sdlRenderer);
 	void load_image(char* path,ResourceManager *resourceManager);
 	void set_time(int time);
 	void set_position(int x,int y);

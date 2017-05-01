@@ -29,11 +29,11 @@ void Stats::load_image(char *path, ResourceManager *resourceManager){
 	de->load_image(path,resourceManager);
 }
 
-void Stats::draw(SDL_Surface *screen){
-	background->draw(screen);
-	sp->draw(screen);
-	po->draw(screen);
-	de->draw(screen);
+void Stats::draw(SDL_Renderer *sdlRenderer){
+	background->draw(sdlRenderer);
+	sp->draw(sdlRenderer);
+	po->draw(sdlRenderer);
+	de->draw(sdlRenderer);
 }
 
 void Stats::update(){

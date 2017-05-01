@@ -40,7 +40,7 @@ public:
 			this->captain = new Captain(x+17,y-55,team);
 		}
 	}
-	void draw(SDL_Surface *screen);
+	void draw(SDL_Renderer *sdlRenderer);
 	void load_image(char *path_selectTeam,char *path_ui,char *path_portraits,ResourceManager *resourceManager);
 	int get_width();
 	int get_height();

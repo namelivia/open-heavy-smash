@@ -1,19 +1,19 @@
 #include "SelectTeamScreen.h"
 #include "Constants.h"
 
-void SelectTeamScreen::draw(SDL_Surface *screen){
+void SelectTeamScreen::draw(SDL_Renderer *sdlRenderer){
 
-	background->draw(screen);
-	clock->draw(screen);
-	for (int i=0;i<10;i++)flags[i].draw(screen);
-	flagSelector->draw(screen);
-	player1SelectTeam->draw(screen);
-	player2SelectTeam->draw(screen);
+	background->draw(sdlRenderer);
+	clock->draw(sdlRenderer);
+	for (int i=0;i<10;i++)flags[i].draw(sdlRenderer);
+	flagSelector->draw(sdlRenderer);
+	player1SelectTeam->draw(sdlRenderer);
+	player2SelectTeam->draw(sdlRenderer);
 }
 
 int SelectTeamScreen::read_keyboard(){
 	int key = CurrentScreen::read_keyboard();
-	if (key>0) pressedKey=key;
+	if (key>0) pressedKey = key;
 	return 0;
 }
 

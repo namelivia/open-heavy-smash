@@ -1,22 +1,16 @@
 #include "MapScreen.h"
 
-void MapScreen::draw(SDL_Surface *screen){
+void MapScreen::draw(SDL_Renderer *sdlRenderer){
 
-	SDL_Rect clearRect;
-	clearRect.x = 0;
-	clearRect.y = 0;
-	clearRect.w = SCREEN_WIDTH;
-	clearRect.h = SCREEN_HEIGHT;
-	SDL_FillRect(screen, &clearRect, SDL_MapRGB(screen->format, 38, 38, 38));
 	for(int i=0;i<SCREEN_WIDTH;i++)
-		background[i].draw(screen);
-	map->draw(screen);
+		background[i].draw(sdlRenderer);
+	map->draw(sdlRenderer);
 	for (int i=0;i<10;i++){
-			flags[i].draw(screen);
-			destiny[i].draw(screen);
+			flags[i].draw(sdlRenderer);
+			destiny[i].draw(sdlRenderer);
 	}
-	spaceShuttle->draw(screen);
-	spaceStation->draw(screen);
+	spaceShuttle->draw(sdlRenderer);
+	spaceStation->draw(sdlRenderer);
 }
 
 int MapScreen::read_keyboard(){

@@ -4,15 +4,15 @@ void PowerBar::load_image(char* path,ResourceManager *resourceManager){
 	background.load_image(path,resourceManager);
 	for (Uint8 i=0;i<32;i++){
 			powerCells[i].load_image(path,resourceManager);
-			powerCells[i].make_flasheable(150);
+			//powerCells[i].make_flasheable(150);
 	}
 }
 
-void PowerBar::draw(SDL_Surface *screen){
-	background.draw(screen);
+void PowerBar::draw(SDL_Renderer *sdlRenderer){
+	background.draw(sdlRenderer);
 	for (Uint8 i=0;i<power;i++){
-		if (power==32) powerCells[i].flash();
-		powerCells[i].draw(screen);
+		//if (power==32) powerCells[i].flash();
+		powerCells[i].draw(sdlRenderer);
 	}
 }
 

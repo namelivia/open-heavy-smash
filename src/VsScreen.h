@@ -37,13 +37,13 @@ public:
 		vs->set_height(60);
 		vs->set_source_x(118);
 		vs->set_source_y(0);
-		vs->make_flasheable(255);
+		//vs->make_flasheable(255);
 
 		portrait2->load_image((char *)G_PORTRAITS,resourceManager);
 		music->play();
 	}
 	void update();
-	void draw(SDL_Surface *screen);
+	void draw(SDL_Renderer *sdlRenderer);
 	int read_keyboard();
 	void finish();
 	bool get_destroyMe();

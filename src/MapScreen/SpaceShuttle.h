@@ -33,7 +33,7 @@ public:
 		fireFrame = false;
 		flipped = false;
 	}
-	void draw(SDL_Surface *screen);
+	void draw(SDL_Renderer *sdlRenderer);
 	void load_image(char* path,ResourceManager *resourceManager);
 	void hflip();
 	void set_position(int x,int y);

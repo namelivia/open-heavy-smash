@@ -1,9 +1,9 @@
 #include "PlayerUI.h"
 
-void PlayerUI::draw(SDL_Surface *screen){
-	powerbar->draw(screen);
-	score->draw(screen);
-	flag->draw(screen);
+void PlayerUI::draw(SDL_Renderer *sdlRenderer){
+	powerbar->draw(sdlRenderer);
+	score->draw(sdlRenderer);
+	flag->draw(sdlRenderer);
 }
 
 void PlayerUI::load_image(char *path,ResourceManager *resourceManager){

@@ -1,7 +1,7 @@
 #ifndef CURRENTSCREEN_H_
 #define CURRENTSCREEN_H_
 
-#include "SDL/SDL.h"
+#include "SDL2/SDL.h"
 
 class CurrentScreen{
 private:
@@ -14,7 +14,7 @@ public:
 		destroyMe = false;
 	}
 	virtual void update();
-	virtual void draw(SDL_Surface *screen);
+	virtual void draw(SDL_Renderer *sdlRenderer);
 	virtual int read_keyboard();
 	virtual void finish();
 	int get_cycles();

@@ -4,19 +4,19 @@
 		shuttle.load_image(path,resourceManager);
 		fire.load_image(path,resourceManager);
 	}
-	void SpaceShuttle::draw(SDL_Surface *screen){
+	void SpaceShuttle::draw(SDL_Renderer *sdlRenderer){
 
 		set_position(x,y);
-		shuttle.draw(screen);
+		shuttle.draw(sdlRenderer);
 
 		if (isFlying){
-			fire.draw(screen);
+			fire.draw(sdlRenderer);
 		}
 	}
 
 	void SpaceShuttle::hflip(){
-		shuttle.hflip();
-		fire.hflip();
+		/*shuttle.hflip();
+		fire.hflip();*/
 		flipped = true;
 		fireFrame = !fireFrame;
 	}

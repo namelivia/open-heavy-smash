@@ -16,7 +16,7 @@ public:
 	Character(int initial_x,int initial_y) {sprite.set_x(initial_x*TILE_WIDTH);sprite.set_y(initial_y*TILE_HEIGHT);step=0;}
 
 	void move_character(int what_direction);
-	void draw(SDL_Surface *screen,Camera *camera);
+	void draw(SDL_Renderer *sdlRenderer,Camera *camera);
 	int get_speed();
 	void stop_moving();
 };

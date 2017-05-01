@@ -2,14 +2,14 @@
 #define RESOURCEMANAGER_H_
 
 #include <iostream>
-#include "SDL/SDL.h"
-#include "SDL/SDL_image.h"
-#include "SDL/SDL_mixer.h"
+#include "SDL2/SDL.h"
+#include "SDL2/SDL_image.h"
+#include "SDL2/SDL_mixer.h"
 
 class ResourceManager {
 private:
 	typedef struct {
-		SDL_Surface *image;
+		SDL_Texture *image;
 		char *identificator;
 	} ImageResource;
 
@@ -40,10 +40,10 @@ public:
 		soundsIndex = 0;
 	};
 
-	int load_image(char *path);
+	int load_image(char *path, SDL_Renderer *sdlRenderer);
 	int load_music(char *path);
 	int load_sound(char *path);
-	SDL_Surface *get_image(char *path);
+	SDL_Texture *get_image(char *path);
 	Mix_Music *get_music(char *path);
 	Mix_Chunk *get_sound(char *path);
 	void finish();

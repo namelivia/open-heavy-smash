@@ -3,25 +3,50 @@
 using namespace std;
 
 void Game::init(){
-	SDL_Init(SDL_INIT_VIDEO | SDL_INIT_AUDIO);
+	if (SDL_Init(SDL_INIT_VIDEO | SDL_INIT_AUDIO) < 0) {
+		 printf("SDL could not initialize! SDL_Error: %s\n", SDL_GetError());
+	};
 	printf("Started\n");
 	currentScreen = 0;
 	gameState = new GameState();
-	screen = SDL_SetVideoMode(SCREEN_WIDTH,SCREEN_HEIGHT, 16, SDL_HWSURFACE);
+	sdlWindow = SDL_CreateWindow(
+		"SDL Tutorial",
+		SDL_WINDOWPOS_UNDEFINED,
+		SDL_WINDOWPOS_UNDEFINED,
+		SCREEN_WIDTH,
+		SCREEN_HEIGHT,
+		0 //TODO: Window flags
+	);
+	if(sdlWindow == NULL ) {
+		printf("Window could not be created! SDL_Error: %s\n", SDL_GetError()); 
+	}
+	sdlRenderer = SDL_CreateRenderer(
+		sdlWindow,
+		-1,
+		SDL_RENDERER_ACCELERATED //TODO: Renderer flags
+	);
+	if(sdlRenderer == NULL ) {
+		printf("Renderer could not be created! SDL_Error: %s\n", SDL_GetError()); 
+	}
+	SDL_SetRenderDrawColor(sdlRenderer, 0xFF, 0xFF, 0xFF, 0xFF);
+	int imgFlags = IMG_INIT_PNG;
+	if( !( IMG_Init( imgFlags ) & imgFlags ) ) {
+		cerr<<"SDL_Image could not start\n";
+	}
+
 	if(Mix_OpenAudio(MIX_DEFAULT_FREQUENCY, MIX_DEFAULT_FORMAT, 1, 4096)!=0){
 		cerr<<"Audio could not start\n";
 	}
-	SDL_WM_SetCaption("Heavy Smash","Heavy Smash");
 
 	//Resource loading
 	this->resourceManager = new ResourceManager();
 
 	//Graphics
-	resourceManager->load_image((char *)G_SELECTSCREEN);
-	resourceManager->load_image((char *)G_UI);
-	resourceManager->load_image((char *)G_PORTRAITS);
-	resourceManager->load_image((char *)G_WORLDMAP);
-	resourceManager->load_image((char *)G_INTRO);
+	resourceManager->load_image((char *)G_SELECTSCREEN, sdlRenderer);
+	resourceManager->load_image((char *)G_UI, sdlRenderer);
+	resourceManager->load_image((char *)G_PORTRAITS, sdlRenderer);
+	resourceManager->load_image((char *)G_WORLDMAP, sdlRenderer);
+	resourceManager->load_image((char *)G_INTRO, sdlRenderer);
 
 	//Music
 	resourceManager->load_music((char *)M_TEAMSELECTION);
@@ -44,15 +69,21 @@ void Game::init(){
 void Game::loop(){
 	while(not exit) {
 		while (SDL_PollEvent(&event)) {
-			if (event.type == SDL_QUIT) exit = true;
+			if (event.type == SDL_QUIT) {
+				printf("Exiting...\n");
+				exit = true;
+			}
 		}
+		SDL_RenderClear(sdlRenderer);
 
 		int loops = fps_sync();
 		int i;
-		if (currentScreen ==0) {
-			for (i=0;i<loops;i++) selectTeamScreen.read_keyboard();
+		if (currentScreen == 0) {
+			for (i=0;i<loops;i++) {
+				selectTeamScreen.read_keyboard();
+			}
 			selectTeamScreen.update();
-			selectTeamScreen.draw(screen);
+			selectTeamScreen.draw(sdlRenderer);
 			if (selectTeamScreen.get_destroyMe()){
 				if (gameState->getLastDefeated() == -1)
 				{
@@ -69,7 +100,7 @@ void Game::loop(){
 		else if (currentScreen == 1){
 			for (i=0;i<loops;i++) mapScreen.read_keyboard();
 			mapScreen.update();
-			mapScreen.draw(screen);
+			mapScreen.draw(sdlRenderer);
 			if (mapScreen.get_destroyMe()){
 				mapScreen.finish();
 				currentScreen++;
@@ -81,7 +112,7 @@ void Game::loop(){
 		else if (currentScreen == 2){
 			for (i=0;i<loops;i++) vsScreen.read_keyboard();
 			vsScreen.update();
-			vsScreen.draw(screen);
+			vsScreen.draw(sdlRenderer);
 			if (vsScreen.get_destroyMe()){
 				vsScreen.finish();
 				currentScreen++;
@@ -92,9 +123,9 @@ void Game::loop(){
 		else {
 			for (i=0;i<loops;i ++) match.read_keyboard();
 			match.update();
-			match.draw(screen);
+			match.draw(sdlRenderer);
 		}
-		SDL_Flip(screen);
+		SDL_RenderPresent(sdlRenderer);
 	}
 }
 
@@ -117,8 +148,12 @@ int Game::fps_sync (void)
 }
 
 void Game::finish(){
+	SDL_DestroyRenderer(sdlRenderer);
+	SDL_DestroyWindow(sdlWindow);
 	//match.finish();
-	vsScreen.finish();
+	//vsScreen.finish();
 	Mix_CloseAudio();
+	IMG_Quit();
 	SDL_Quit();
+	printf("Bye!\n");
 }

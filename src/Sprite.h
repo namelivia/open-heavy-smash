@@ -34,12 +34,12 @@ public:
 	int get_x();
 	int get_y();
 	void load_image(char* path, ResourceManager *resourceManager);
-	void draw(SDL_Surface *screen,Camera *camera);
-	void draw(SDL_Surface *screen);
-	void make_flasheable(Uint8 strength);
+	void draw(SDL_Renderer *sdlRenderer,Camera *camera);
+	void draw(SDL_Renderer *sdlRenderer);
+	/*void make_flasheable(Uint8 strength);
 	void make_grayscale();
 	void hflip();
-	void flash();
+	void flash();*/
 };
 
 #endif /* SPRITE_H_ */

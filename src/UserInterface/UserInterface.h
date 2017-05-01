@@ -26,7 +26,7 @@ public:
 			this->player2UI = new PlayerUI(x+width-player1UI->get_width(),y,true,0,0,newMatch->getPlayer2Team());
 		}
 
-	void draw(SDL_Surface *screen);
+	void draw(SDL_Renderer *sdlRenderer);
 	void load(char *path,ResourceManager *resourceManager);
 	void update(MatchState *matchState);
 };

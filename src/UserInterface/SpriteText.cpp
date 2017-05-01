@@ -3,5 +3,5 @@
 
 using namespace std;
 
-void SpriteText::draw(SDL_Surface *screen,Camera *camera){
+void SpriteText::draw(SDL_Renderer *sdlRenderer,Camera *camera){
 }

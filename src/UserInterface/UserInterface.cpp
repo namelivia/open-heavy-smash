@@ -1,9 +1,9 @@
 #include "UserInterface.h"
 
-void UserInterface::draw(SDL_Surface *screen){
-	clock->draw(screen);
-	player1UI->draw(screen);
-	player2UI->draw(screen);
+void UserInterface::draw(SDL_Renderer *sdlRenderer){
+	clock->draw(sdlRenderer);
+	player1UI->draw(sdlRenderer);
+	player2UI->draw(sdlRenderer);
 }
 void UserInterface::load(char *path,ResourceManager *resourceManager){
 	clock->load_image(path,resourceManager);
