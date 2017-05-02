@@ -54,26 +54,26 @@ int Game::initSdlImage()
 
 int Game::loadImages()
 {
-	resourceManager->load_image((char *)G_SELECTSCREEN, sdlRenderer);
-	resourceManager->load_image((char *)G_UI, sdlRenderer);
-	resourceManager->load_image((char *)G_PORTRAITS, sdlRenderer);
-	resourceManager->load_image((char *)G_WORLDMAP, sdlRenderer);
-	resourceManager->load_image((char *)G_INTRO, sdlRenderer);
+	resourceManager.get()->load_image((char *)G_SELECTSCREEN, sdlRenderer);
+	resourceManager.get()->load_image((char *)G_UI, sdlRenderer);
+	resourceManager.get()->load_image((char *)G_PORTRAITS, sdlRenderer);
+	resourceManager.get()->load_image((char *)G_WORLDMAP, sdlRenderer);
+	resourceManager.get()->load_image((char *)G_INTRO, sdlRenderer);
 	return 0;
 }
 
 int Game::loadMusic()
 {
-	resourceManager->load_music((char *)M_TEAMSELECTION);
-	resourceManager->load_music((char *)M_USA);
-	resourceManager->load_music((char *)M_VS);
+	resourceManager.get()->load_music((char *)M_TEAMSELECTION);
+	resourceManager.get()->load_music((char *)M_USA);
+	resourceManager.get()->load_music((char *)M_VS);
 	return 0;
 }
 
 int Game::loadSoundEffects()
 {
-	resourceManager->load_sound((char *)S_CURSOR);
-	resourceManager->load_sound((char *)S_SHINY);
+	resourceManager.get()->load_sound((char *)S_CURSOR);
+	resourceManager.get()->load_sound((char *)S_SHINY);
 	return 0;
 }
 
@@ -99,7 +99,7 @@ int Game::init()
 	}
 
 	//Resource loading
-	this->resourceManager = new ResourceManager();
+	this->resourceManager = std::make_shared<ResourceManager>();
 	if (
 		Game::loadImages() > 0 ||
 		Game::loadMusic() > 0 ||
@@ -120,9 +120,13 @@ int Game::init()
 	//SelectTeamScreen newSelectTeamScreen(10,resourceManager,gameState);
 	//selectTeamScreen = newSelectTeamScreen;
 	exit = false;
-	this->scenes.push_back(std::make_unique<SceneOne>(0, "Scene 0"));
-	this->scenes.push_back(std::make_unique<SceneOne>(1, "Scene 1"));
-	this->scenes.push_back(std::make_unique<SceneOne>(2, "Scene 2"));
+	this->scenes.push_back(
+			std::make_unique<SceneOne>(
+				0,
+				"Scene 0",
+				this->resourceManager
+			)
+	);
 	return 0;
 }
 
@@ -142,7 +146,7 @@ void Game::loop(){
 			key = Game::readKeyboard();
 		}
 		int nextScene = this->scenes[sceneIndex]->update(key);
-		this->scenes[sceneIndex]->print();
+		//this->scenes[sceneIndex]->print();
 		this->scenes[sceneIndex]->draw(sdlRenderer);
 		/*
 		int i;

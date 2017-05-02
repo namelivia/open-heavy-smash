@@ -27,7 +27,7 @@ private:
 	SelectTeamScreen selectTeamScreen;
 	*/
 	SDL_Event event;
-	ResourceManager *resourceManager;
+	std::shared_ptr<ResourceManager> resourceManager;
 	GameState *gameState;
 	bool exit;
 	int currentScreen;

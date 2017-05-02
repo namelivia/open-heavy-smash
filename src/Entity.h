@@ -1,28 +1,27 @@
 #include <iostream>
 #include <string>
 #include "SDL2/SDL.h"
+#include "SDL2/SDL_ttf.h"
 #ifndef ENTITY_H_
 #define ENTITY_H_
 
 class Entity{
-private:
+protected:
 	std::string name;
 	unsigned id;
 	unsigned counter;
 	int x;
 	int y;
 public:
-	Entity() {}
-	Entity(unsigned id, std::string name) {
-		this->id = id;
-		this->name = name;
+	Entity() {
+		this->name = "Unnamed entity";
 		this->counter = 0;
 		this->x = 0;
 		this->y = 0;
 	}
-	void print();
-	void update();
-	void draw(SDL_Renderer *sdlRenderer);
+	virtual void print();
+	virtual void update();
+	virtual void draw(SDL_Renderer *sdlRenderer);
 };
 
-#endif /* Entity_H_ */
+#endif /* ENTITY_H_ */

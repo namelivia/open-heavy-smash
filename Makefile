@@ -2,7 +2,7 @@ CPP_FILES := $(shell find ./src -name *.cpp)
 OBJ_FILES := $(CPP_FILES:%.cpp=%.o)
 
 run: $(OBJ_FILES)
-	g++ -lSDL2 -lSDL2_mixer -lSDL2_image -o $@ $^
+	g++ -lSDL2 -lSDL2_mixer -lSDL2_ttf -lSDL2_image -o $@ $^
 
 %.o: %.cpp
 	g++ -c -o $@ $<
