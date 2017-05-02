@@ -1,6 +1,6 @@
 #include "Scene.h"
 
-void Scene::print()
+/*void Scene::print()
 {
 	std::cout << "[SCENE]\n";
 	std::cout << "Name:" << this->name << "\n";
@@ -10,7 +10,7 @@ void Scene::print()
 	for(auto const& entity: this->entities) {
 		entity->print();
 	}
-}
+}*/
 
 int Scene::update(int userInput)
 {
@@ -32,7 +32,7 @@ void Scene::draw(SDL_Renderer *sdlRenderer)
 	}
 }
 
-void Scene::addEntity()
+void Scene::addEntity(int id, std::string name)
 {
-	this->entities.push_back(std::make_unique<Entity>(1, "foo"));
+	this->entities.push_back(std::make_unique<Entity>(id, name));
 }

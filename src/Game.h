@@ -10,6 +10,7 @@
 #include "NewMatch.h"
 #include "Constants.h"
 #include "Scene.h"
+#include "Scenes/SceneOne.h"
 #include <vector>
 #include <memory>
 

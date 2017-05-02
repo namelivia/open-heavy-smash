@@ -8,22 +8,20 @@
 #define SCENE_H_
 
 class Scene {
-private:
+protected:
 	std::string name;
 	unsigned id;
 	unsigned counter;
 	std::vector<std::unique_ptr<Entity>> entities;
 public:
-	Scene() {};
-	Scene(unsigned id, std::string name) {
-		this->id = id;
-		this->name = name;
+	Scene() {
+		this->name = "Unnamed scene";
 		this->counter = 0;
 	}
-	void print();
-	int update(int userInput);
-	void draw(SDL_Renderer *sdlRenderer);
-	void addEntity();
+	virtual void print(void)=0;
+	virtual int update(int userInput);
+	virtual void draw(SDL_Renderer *sdlRenderer);
+	virtual void addEntity(int id, std::string name);
 };
 
 #endif /* SCENE_H_ */

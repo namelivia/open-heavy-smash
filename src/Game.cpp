@@ -109,8 +109,8 @@ int Game::init()
 	}
 
 	//Init other stuff
-	SDL_SetRenderDrawColor(sdlRenderer, 0xFF, 0xFF, 0xFF, 0xFF);
-	printf("Started\n");
+	//SDL_SetRenderDrawColor(sdlRenderer, 0xFF, 0xFF, 0xFF, 0xFF);
+	//printf("Started\n");
 	currentScreen = 0;
 	this->sceneIndex = 0;
 	gameState = new GameState();
@@ -120,9 +120,9 @@ int Game::init()
 	//SelectTeamScreen newSelectTeamScreen(10,resourceManager,gameState);
 	//selectTeamScreen = newSelectTeamScreen;
 	exit = false;
-	Game::setUpFirstScene();
-	Game::setUpSecondScene();
-	Game::setUpThirdScene();
+	this->scenes.push_back(std::make_unique<SceneOne>(0, "Scene 0"));
+	this->scenes.push_back(std::make_unique<SceneOne>(1, "Scene 1"));
+	this->scenes.push_back(std::make_unique<SceneOne>(2, "Scene 2"));
 	return 0;
 }
 
@@ -236,21 +236,4 @@ void Game::finish(){
 	IMG_Quit();
 	SDL_Quit();
 	printf("Bye!\n");
-}
-
-//This will be probably managed by reading files from the
-//filesystem!
-void Game::setUpFirstScene(){
-	this->scenes.push_back(std::make_unique<Scene>(0, "first"));
-	this->scenes[0]->addEntity();
-}
-
-void Game::setUpSecondScene(){
-	this->scenes.push_back(std::make_unique<Scene>(1, "second"));
-	this->scenes[1]->addEntity();
-}
-
-void Game::setUpThirdScene(){
-	this->scenes.push_back(std::make_unique<Scene>(2, "third"));
-	this->scenes[2]->addEntity();
 }
