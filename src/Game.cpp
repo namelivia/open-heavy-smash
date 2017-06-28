@@ -145,9 +145,10 @@ void Game::loop(){
 		for (int i=0;i<loops;i++) {
 			key = Game::readKeyboard();
 		}
-		int nextScene = this->scenes[sceneIndex]->update(key);
+		Scene* currentScene = this->scenes[sceneIndex].get();
+		int nextScene = currentScene->update(key);
 		//this->scenes[sceneIndex]->print();
-		this->scenes[sceneIndex]->draw(sdlRenderer);
+		currentScene->draw(sdlRenderer);
 		/*
 		int i;
 		if (currentScreen == 0) {

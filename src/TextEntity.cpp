@@ -28,3 +28,8 @@ void TextEntity::draw(SDL_Renderer *sdlRenderer)
 	Message_rect.h = 100;
 	SDL_RenderCopy(sdlRenderer, Message, NULL, &Message_rect);
 }
+
+void TextEntity::setText(std::string text)
+{
+	this->text = text;
+}

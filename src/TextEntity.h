@@ -17,6 +17,7 @@ public:
 	void print();
 	void update();
 	void draw(SDL_Renderer *sdlRenderer);
+	void setText(std::string text);
 };
 
 #endif /* TEXTENTITY_H_ */

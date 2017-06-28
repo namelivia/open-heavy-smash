@@ -9,6 +9,8 @@
 #define SCENE_ONE_H_
 
 class SceneOne : public Scene {
+private:
+	void setTitleText(std::string text);
 protected:
 	unsigned sceneOneCounter;
 public:
@@ -21,7 +23,7 @@ public:
 		this->name = name;
 		this->sceneOneCounter = 100;
 		this->resourceManager = resourceManager;
-		this->addImageEntity(1, "foo");
+		this->addTextEntity(1, "title");
 	}
 	void print(void);
 	int update(int userInput);

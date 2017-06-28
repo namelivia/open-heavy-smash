@@ -17,5 +17,14 @@ int SceneOne::update(int userInput)
 {
 	Scene::update(userInput);
 	this->sceneOneCounter++;
+	if (userInput == 4) {
+		this->setTitleText("whatever");
+	}
 	return this->id;
+}
+
+void SceneOne::setTitleText(std::string text)
+{
+	TextEntity* entity = dynamic_cast<TextEntity *>(this->entities[0].get());
+	entity->setText(text);
 }
