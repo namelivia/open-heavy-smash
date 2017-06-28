@@ -2,26 +2,22 @@
 
 void SceneOne::print(void)
 {
-	std::cout << "[SCENE_ONE]\n";
-	std::cout << "Name:" << this->name << "\n";
-	std::cout << "Id:" << this->id << "\n";
-	std::cout << "Counter:" << this->counter << "\n";
-	std::cout << "SceneOneCounter:" << this->sceneOneCounter << "\n";
-	std::cout << "[Entities]\n";
-	for(auto const& entity: this->entities) {
-		entity->print();
-	}
+	Scene::print();
+	std::cout << "My counter:" << this->sceneOneCounter<< "\n";
 }
 
 int SceneOne::update(int userInput)
 {
 	Scene::update(userInput);
 	this->sceneOneCounter++;
-	if (userInput == 4) {
-		this->setTitleText("whatever");
-	}
 	return this->id;
 }
+
+void SceneOne::initialize()
+{
+	this->addTextEntity(1, "title");
+	this->setTitleText("whatever");
+}	
 
 void SceneOne::setTitleText(std::string text)
 {

@@ -147,8 +147,8 @@ void Game::loop(){
 		}
 		Scene* currentScene = this->scenes[sceneIndex].get();
 		int nextScene = currentScene->update(key);
-		//this->scenes[sceneIndex]->print();
-		currentScene->draw(sdlRenderer);
+		currentScene->print();
+		//currentScene->draw(sdlRenderer);
 		/*
 		int i;
 		if (currentScreen == 0) {

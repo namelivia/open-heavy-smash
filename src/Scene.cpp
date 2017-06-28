@@ -38,6 +38,11 @@ void Scene::addTextEntity(int id, std::string name)
 	this->entities.push_back(std::make_unique<TextEntity>(id, name));
 }
 
+void Scene::initialize()
+{
+	std::cout << "Scene inicialization";
+}
+
 void Scene::addImageEntity(int id, std::string name)
 {
 	this->entities.push_back(std::make_unique<ImageEntity>(id, name));

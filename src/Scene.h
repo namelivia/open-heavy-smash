@@ -27,6 +27,7 @@ public:
 	//virtual void addEntity(int id, std::string name);
 	virtual void addTextEntity(int id, std::string name);
 	virtual void addImageEntity(int id, std::string name);
+	virtual void initialize(void);
 };
 
 #endif /* SCENE_H_ */

@@ -23,9 +23,10 @@ public:
 		this->name = name;
 		this->sceneOneCounter = 100;
 		this->resourceManager = resourceManager;
-		this->addTextEntity(1, "title");
+		this->initialize();
 	}
 	void print(void);
+	void initialize(void);
 	int update(int userInput);
 };
 
